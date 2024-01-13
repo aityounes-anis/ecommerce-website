@@ -1,8 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-import Link from "next/link";
 
 const HeroSection = () => {
   return (

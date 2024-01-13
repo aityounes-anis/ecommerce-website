@@ -15,10 +15,10 @@ export default function MarketingLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className={cn("h-[100vh] bg-slate-100", textFont.className)}>
+    <div className={cn("h-full bg-slate-100", textFont.className)}>
       <MarketingLine />
       <Navbar />
-      <main className="bg-slate-100 h-[100vh]">{children}</main>
+      <main className="bg-slate-100 h-full w-full">{children}</main>
     </div>
   );
 }
