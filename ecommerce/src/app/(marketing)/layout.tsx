@@ -18,7 +18,9 @@ export default function MarketingLayout({
     <div className={cn("h-full bg-slate-100", textFont.className)}>
       <MarketingLine />
       <Navbar />
-      <main className="bg-slate-100 h-full w-full">{children}</main>
+      <main className="bg-slate-100 h-full w-full overflow-hidden">
+        {children}
+      </main>
     </div>
   );
 }
