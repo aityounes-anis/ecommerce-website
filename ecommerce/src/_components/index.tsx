@@ -6,6 +6,9 @@ import Carroussel from "./Caroussel";
 import CircleSection from "./circle-section";
 import FAQ from "./FAQ";
 import CTAButton from "./CTAButton";
+import Footer from "./Footer";
+import Logo from "./Logo";
+import AskSignInOut from "./AskSignInOut";
 
 export {
   MarketingLine,
@@ -16,4 +19,7 @@ export {
   CircleSection,
   FAQ,
   CTAButton,
+  Footer,
+  Logo,
+  AskSignInOut,
 };

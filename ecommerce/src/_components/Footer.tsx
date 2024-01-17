@@ -1,3 +1,5 @@
+import { AskSignInOut } from ".";
+
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
@@ -47,15 +49,12 @@ const Footer = () => {
           <div className="flex flex-col items-center justify-center space-y-2 md:items-start">
             <h1 className="text-2xl font-bold">Connectez-vous</h1>
             <div className="space-x-2 md:space-y-2 flex md:flex-col items-start">
-              <Button type="button" variant="outline">
-                Créer un nouveau compte
-              </Button>
-              <Button type="button">Se connecter</Button>
+              <AskSignInOut />
             </div>
           </div>
         </div>
         <Separator />
-        <div className="py-8 px-12 flex items-center justify-between m-auto md:max-w-[800px] lg:max-w-[1275px]">
+        <div className="py-8 px-12 flex items-center justify-center m-auto md:justify-between md:max-w-[800px] lg:max-w-[1275px]">
           <p className="text-center font-semibold text-neutral-800">
             &copy; {currentYear} EL SAJAD
           </p>

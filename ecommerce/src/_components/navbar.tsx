@@ -1,30 +1,39 @@
-import { Cart } from ".";
-
-import Image from "next/image";
-import Link from "next/link";
+import { AskSignInOut, Cart, Logo } from ".";
 
 import { UserRound } from "lucide-react";
-import { Button } from "@/components/ui/button";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Navbar = () => {
   return (
-    <nav className="w-full py-3 sticky top-0 left-0 bg-slate-100 z-50">
+    <nav className="w-full py-3 sticky top-0 left-0 bg-slate-100/95 z-50 shadow-sm shadow-black">
       <div className="max-w-screen-2xl flex items-center justify-between m-auto py-4 px-4 md:max-w-[800px] lg:max-w-[1275px]">
-        <div className="flex items-center">
-          <Image
-            src="../../images/logo.svg"
-            alt="LOGO"
-            width={50}
-            height={50}
-          />
-          <p className="font-bold text-md">El SAJAD</p>
-        </div>
+        <Logo />
         <div className="flex space-x-2">
-          <Button type="button" variant="ghost" asChild>
-            <Link href="/">
+          <Dialog>
+            <DialogTrigger>
               <UserRound />
-            </Link>
-          </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Connectez vous!</DialogTitle>
+                <DialogDescription>
+                  Restez connectés pour être informés de nos nouveaux produits !
+                </DialogDescription>
+                <div className="pt-4">
+                  <AskSignInOut />
+                </div>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
+
           <Cart />
         </div>
       </div>

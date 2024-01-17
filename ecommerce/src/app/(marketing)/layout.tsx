@@ -1,4 +1,4 @@
-import { MarketingLine, Navbar } from "@/_components";
+import { Footer, MarketingLine, Navbar } from "@/_components";
 
 import { Poppins } from "next/font/google";
 
@@ -21,6 +21,7 @@ export default function MarketingLayout({
       <main className="bg-slate-100 h-full w-full overflow-hidden">
         {children}
       </main>
+      <Footer />
     </div>
   );
 }
