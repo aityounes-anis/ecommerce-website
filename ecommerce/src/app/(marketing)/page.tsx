@@ -1,5 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
-import { HeroSection, Carroussel, CircleSection } from "@/_components";
+import {
+  HeroSection,
+  Carroussel,
+  CircleSection,
+  FAQ,
+  CTAButton,
+} from "@/_components";
 
 import Image from "next/image";
 
@@ -8,7 +14,7 @@ export default function Home() {
     <div className="w-full">
       <main className="w-full">
         <HeroSection />
-        <div className="px-4 py-4 space-x-11 -mt-16 w-full h-full flex flex-col items-center justify-center m-auto md:flex-row md:items-center md:justify-between md:max-w-[800px] md:py-8 lg:max-w-[1275px] lg:py-11">
+        <div className="px-4 py-4 space-x-11 space-y-8 -mt-16 w-full h-full flex flex-col items-center justify-center m-auto md:flex-row md:items-center md:justify-between md:max-w-[800px] md:py-8 lg:max-w-[1275px] lg:py-11">
           <div className="text-center space-y-4 py-4 md:text-start lg:space-y-8">
             <h1 className="text-2xl font-extrabold md:text-3xl lg:text-5xl">
               Pouqruoi Choisir
@@ -20,6 +26,7 @@ export default function Home() {
               La Réponse est facile! Profitez d'un pack qui contient les
               nécessitées de chaque Musulman: Tapis de Prière et un TASBIH!
             </p>
+            <CTAButton variantButton="default" />
           </div>
           <Image
             src="/../../../images/sajad_01.png"
@@ -39,6 +46,7 @@ export default function Home() {
               Pas de soucis, EL SAJAD va vous aider à trouver ce que vous
               cherchez et vous donne le choix parmi 11 couleurs différentes!
             </p>
+            <CTAButton variantButton="default" />
           </div>
           <div className="w-64 h-64 lg:w-72 lg:h-72">
             <Carroussel />
@@ -72,6 +80,9 @@ export default function Home() {
               />
             </div>
           </div>
+        </div>
+        <div className="w-full m-auto px-2 py-11 md:max-w[800px] lg:max-w-[1275px]">
+          <FAQ />
         </div>
       </main>
     </div>

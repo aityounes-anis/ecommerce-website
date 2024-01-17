@@ -1,8 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
+import { CTAButton } from ".";
 
-import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 const HeroSection = () => {
   return (
@@ -27,19 +25,7 @@ const HeroSection = () => {
             </p>
           </div>
           <div>
-            <Button
-              type="button"
-              variant="outline"
-              className="space-x-2"
-              asChild
-            >
-              <Link href="/">
-                Commendez maintenant
-                <span>
-                  <ChevronRight />
-                </span>
-              </Link>
-            </Button>
+            <CTAButton variantButton="outline" />
           </div>
         </div>
       </div>
