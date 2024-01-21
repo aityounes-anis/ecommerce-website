@@ -1,8 +1,8 @@
 "use client";
 
-import { AskSignInOut, Cart, CartItem, Logo } from ".";
+import { AskSignInOut, Cart, Logo } from ".";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { UserRound } from "lucide-react";
 import {
@@ -17,15 +17,25 @@ import {
 import { ProductsType } from "./Cart";
 
 const Navbar = () => {
-  const [products, setProducts] = useState<ProductsType[]>([
-    {
-      id: 1,
-      name: "Product 1",
-      quantity: 1,
-      price: 12,
-      image: "/../../images/products/a1.png",
-    },
-  ]);
+  const initialProducts: ProductsType[] = (() => {
+    try {
+      const storedCart = localStorage.getItem("cart");
+      if (storedCart) {
+        const parsedCart = JSON.parse(storedCart);
+        if (
+          Array.isArray(parsedCart) &&
+          parsedCart.every((item) => typeof item === "object")
+        ) {
+          return parsedCart as ProductsType[];
+        }
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+    return [];
+  })();
+
+  const [products, setProducts] = useState<ProductsType[]>(initialProducts);
 
   const productsQuantity = products.length;
 
@@ -46,6 +56,18 @@ const Navbar = () => {
     );
     setProducts(newCartProducts);
   };
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      const parsedCart = JSON.parse(storedCart);
+      setProducts(parsedCart);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(products));
+  }, [products]);
 
   return (
     <nav className="w-full py-3 sticky top-0 left-0 bg-slate-100/95 z-50 shadow-sm shadow-black">
