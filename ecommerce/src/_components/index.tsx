@@ -9,6 +9,10 @@ import CTAButton from "./CTAButton";
 import Footer from "./Footer";
 import Logo from "./Logo";
 import AskSignInOut from "./AskSignInOut";
+import CartItem from "./CartItem";
+import Counter from "./Counter";
+import CheckoutButton from "./CheckoutButton";
+import ProductCard from "./ProductCard";
 
 export {
   MarketingLine,
@@ -22,4 +26,8 @@ export {
   Footer,
   Logo,
   AskSignInOut,
+  CartItem,
+  Counter,
+  CheckoutButton,
+  ProductCard,
 };

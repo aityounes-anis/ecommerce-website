@@ -30,13 +30,12 @@ const Navbar = () => {
         }
       }
     } catch (error) {
-      console.log("error", error);
+      console.error("Error parsing cart data from localStorage:", error);
     }
     return [];
   })();
 
   const [products, setProducts] = useState<ProductsType[]>(initialProducts);
-
   const productsQuantity = products.length;
 
   const updateCartProducts = (productId: number, newQuantity: number) => {

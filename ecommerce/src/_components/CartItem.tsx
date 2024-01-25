@@ -6,7 +6,6 @@ import { ProductsType } from "./Cart";
 import { useState } from "react";
 import Image from "next/image";
 
-import { Trash } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const CartItem = ({
@@ -21,14 +20,14 @@ const CartItem = ({
   updateCartProducts: (productId: number, newQuantity: number) => void;
   removeProduct: (productId: number) => void;
 }) => {
-  const [productQuantity, setProductQuantity] = useState(quantity);
+  const [productQuantity, setProductQuantity] = useState<number>(quantity);
 
   const handleQuantityChange = (newQuantity: number) => {
     setProductQuantity(newQuantity);
-    updateCartProducts(id, productQuantity);
+    updateCartProducts(id, newQuantity);
   };
 
-  const totalPrice = price * productQuantity;
+  const totalProductPrice = price * productQuantity;
 
   return (
     <div className="flex flex-row-reverse items-basline justify-between">
@@ -46,7 +45,7 @@ const CartItem = ({
             quantity={productQuantity}
             setProductQuantity={handleQuantityChange}
           />
-          <p className="font-semibold">{totalPrice}€</p>
+          <p className="font-semibold">{totalProductPrice}€</p>
         </div>
         <Button
           type="button"

@@ -22,7 +22,7 @@ const CTAButton = ({ variantButton }: { variantButton: VariantButtonType }) => {
         className="space-x-2"
         asChild
       >
-        <Link href="/">
+        <Link href="/products">
           Commendez maintenant
           <span>
             <ChevronRight />
