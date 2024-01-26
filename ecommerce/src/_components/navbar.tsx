@@ -17,25 +17,7 @@ import {
 import { ProductsType } from "./Cart";
 
 const Navbar = () => {
-  const initialProducts: ProductsType[] = (() => {
-    try {
-      const storedCart = localStorage.getItem("cart");
-      if (storedCart) {
-        const parsedCart = JSON.parse(storedCart);
-        if (
-          Array.isArray(parsedCart) &&
-          parsedCart.every((item) => typeof item === "object")
-        ) {
-          return parsedCart as ProductsType[];
-        }
-      }
-    } catch (error) {
-      console.error("Error parsing cart data from localStorage:", error);
-    }
-    return [];
-  })();
-
-  const [products, setProducts] = useState<ProductsType[]>(initialProducts);
+  const [products, setProducts] = useState<ProductsType[]>([]);
   const productsQuantity = products.length;
 
   const updateCartProducts = (productId: number, newQuantity: number) => {
@@ -54,19 +36,18 @@ const Navbar = () => {
       (product) => product.id !== productId
     );
     setProducts(newCartProducts);
+    localStorage.setItem("cart", JSON.stringify(newCartProducts));
   };
 
   useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-    if (storedCart) {
-      const parsedCart = JSON.parse(storedCart);
-      setProducts(parsedCart);
+    const cartItem = localStorage.getItem("cart");
+    const parsedCartItem = JSON.parse(cartItem);
+    if (!cartItem) {
+      localStorage.setItem("cart", JSON.stringify(products));
     }
+    setProducts(parsedCartItem);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(products));
-  }, [products]);
 
   return (
     <nav className="w-full py-3 sticky top-0 left-0 bg-slate-100/95 z-50 shadow-sm shadow-black">
@@ -89,7 +70,6 @@ const Navbar = () => {
               </DialogHeader>
             </DialogContent>
           </Dialog>
-
           <Cart
             products={products}
             productsQuantity={productsQuantity}
